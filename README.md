@@ -19,5 +19,5 @@ Ensure your server has **Docker** and **Docker Compose** installed. Open the fol
 
 ### 2. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/planetsignal.git](https://github.com/YOUR_USERNAME/planetsignal.git)
+git clone [https://github.com/sovereign-ece/planetsignal.git](https://github.com/sovereign-ece/planetsignal.git)
 cd planetsignal
