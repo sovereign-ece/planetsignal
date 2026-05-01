@@ -1,0 +1,26 @@
+services:
+  planetsignal-vpn:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: planetsignal
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Africa/Lagos
+      - SERVERURL=auto # Set to 'auto' or your Server IP to broadcast globally
+      - SERVERPORT=51820
+      - PEERS=5 
+      - PEERDNS=8.8.8.8,1.1.1.1 # Using Google + Cloudflare for global stability
+      - INTERNAL_NETWORK=10.13.13.0
+      - ALLOWEDIPS=0.0.0.0/0
+      - LOG_CONFS=true # This helps you see the QR codes in your GitHub logs
+    volumes:
+      - ./config:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
